@@ -58,17 +58,17 @@
 - Lazy load routes with react suspense
 - Drop support for azure-pipelines and use only github actions
 - Bump all deps to latest semver
-- Remove `test-e2e` script from tests (blocked on release of https://github.com/DevExpress/testcafe-browser-provider-electron/pull/65)
+- Remove `test-e2e` script from tests (blocked on release of <https://github.com/DevExpress/testcafe-browser-provider-electron/pull/65>)
 - Swap `typed-css-modules-webpack-plugin` for `typings-for-css-modules-loader`
 - Use latest version of `eslint-config-erb`
 - Remove unnecessary file extensions from ts exclude
 - Add experimental support for vscode debugging
-- Revert https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365 as default for users, provide as opt in option
+- Revert <https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365> as default for users, provide as opt in option
 
 # 1.1.0
 
 - Fix #2402
-- Simplify configs (https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2406)
+- Simplify configs (<https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2406>)
 
 # 1.0.0
 
@@ -99,7 +99,7 @@
 - Change clone arguments to clone only master
 - Change babel config to target current electron version
 
-For full change list, see https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2021
+For full change list, see <https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2021>
 
 # 0.17.0 (2018.10.30)
 
@@ -177,7 +177,7 @@ For full change list, see https://github.com/electron-react-boilerplate/electron
 
 #### Breaking
 
-- Changed node dev `__dirname` and `__filename` to node built in fn's (https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/1035)
+- Changed node dev `__dirname` and `__filename` to node built in fn's (<https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/1035>)
 - Renamed `src/bundle.js` to `src/renderer.prod.js` for consistency
 - Renamed `dll/vendor.js` to `dll/renderer.dev.dll.js` for consistency
 
@@ -240,7 +240,7 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 - **Migrated to `electron-builder@4`**
 - **Migrated to `webpack@2`**
 - **Migrated to `react-hot-loader@3`**
-- **Changed default live reload server PORT to `1212` from `3000`**
+- **Changed default live reload server PORT to `4343` from `3000`**
 
 #### Additions
 
