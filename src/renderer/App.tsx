@@ -1,5 +1,5 @@
 import { MemoryRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from '../modules/Home'
+import Home from './modules/Home';
 import './App.scss';
 
 export default function App() {

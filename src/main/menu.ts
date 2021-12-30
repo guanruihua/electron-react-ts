@@ -33,7 +33,6 @@ export default class MenuBuilder {
 
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
-
     return menu;
   }
 

@@ -1,0 +1,51 @@
+$w:98vw;
+$h:76vh;
+$xlineNum: 20;
+$ylineNum: 10;
+$border: 1px solid #fff;
+
+.fighting {
+
+  &-info {
+    max-height: 15vh;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: rgba($color: #fff, $alpha: .1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-user-base {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &-panel {
+    max-height: $h;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat($xlineNum, 1fr);
+    width: $w;
+    height: $h;
+
+    &-cell {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      width: $w/$xlineNum;
+      height: $h/$ylineNum;
+      line-height: $h/$ylineNum;
+      border: 2px solid rgba($color: #000000, $alpha: .1);
+      border-radius: 4px;
+      background-color: rgba($color: #000000, $alpha: .3);
+      cursor: pointer;
+    }
+
+    &-cell:hover {
+      background-color: rgba($color: #000000, $alpha: .5);
+    }
+  }
+
+
+}

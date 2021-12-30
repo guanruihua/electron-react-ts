@@ -1,0 +1,41 @@
+$color1:#7dbcea;
+$color2:#108ee9;
+$color3:#3ba0e9;
+
+$header-color:$color1;
+$footer-color:$color1;
+$content-conlor:$color2;
+$sider-color:$color3;
+
+.rh-layout {
+  width: 100vw;
+
+  & .rh-header {
+    width: 100%;
+    background-color: $header-color;
+  }
+
+  & .rh-footer {
+    width: 100%;
+    background-color: $footer-color;
+  }
+
+  & .rh-content {
+    width: 100%;
+
+    background-color: $content-conlor;
+  }
+
+  & .rh-sider {
+    width: 100%;
+    background-color: $sider-color;
+  }
+
+  &>.rh-content,
+  &>.rh-footer,
+  &>.rh-header,
+  &>.rh-sider {
+    padding: 10px;
+    text-align: center;
+  }
+}
