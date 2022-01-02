@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as eCharts from 'echarts'
 // import Information from '../Information'
 import Fighting from '../Fighting'
+import ThreePage from '../ThreePage'
 import { SubTabs } from '../../components'
 import './index.scss'
 
@@ -19,7 +20,7 @@ class Index extends Component {
           }}
         >
           <SubTabs.Option tab='11' key='1' active='1'>
-            111
+            <ThreePage />
           </SubTabs.Option>
           <SubTabs.Option tab='Fighting' key='2' active='2'>
             <Fighting />

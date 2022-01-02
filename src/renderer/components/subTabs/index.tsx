@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import './index.scss'
 
 const Option: FC<any> = (props: any) => {
@@ -32,7 +32,7 @@ const Index: any = (props: any) => {
     <div className='rh-tab-content' style={{ width, height, ...style }}>
       <div className='rh-tab-header'>
         {children &&
-          children.map((item: any) => {
+          children.map((item: any = {}):any => {
             const { tab, active = undefined } = item.props
             if (active !== undefined)
               return (
@@ -50,7 +50,7 @@ const Index: any = (props: any) => {
           })}
       </div>
 
-      {children.map((item: any) => {
+      {children.map((item: any):any => {
         const { active = undefined, ...rest } = item.props
         if (active !== undefined)
           return (
