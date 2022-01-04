@@ -19,13 +19,13 @@ class Index extends Component {
             localStorage.setItem('panel_active_key', val)
           }}
         >
-          <SubTabs.Option tab='11' key='1' active='1'>
+          <SubTabs.Option tab='Three' key='1' active='1'>
             <ThreePage />
           </SubTabs.Option>
           <SubTabs.Option tab='Fighting' key='2' active='2'>
             <Fighting />
           </SubTabs.Option>
-          <SubTabs.Option tab='33' key='3' active='3'>
+          {/* <SubTabs.Option tab='33' key='3' active='3'>
             333
           </SubTabs.Option>
           <SubTabs.Option tab='44' key='4' active='4'>
@@ -33,7 +33,7 @@ class Index extends Component {
           </SubTabs.Option>
           <SubTabs.Option tab='55' key='5' active='5'>
             555
-          </SubTabs.Option>
+          </SubTabs.Option> */}
         </SubTabs>
       </div>
     )
