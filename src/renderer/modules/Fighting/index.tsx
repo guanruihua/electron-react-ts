@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { _array, _math } from 'rh-js-methods'
 import { useFight } from './hook'
+import { isCanRun, setStyle, isHurt, hurtConfigType } from './util'
 import './index.scss'
+import { render } from '@testing-library/react'
 
 function Cell(props: any) {
   const { className = '', children, ...rest } = props
@@ -13,15 +15,13 @@ function Cell(props: any) {
 }
 
 let x: number = 24
-let y: number = 10
+let y: number = 11
 let itemW: number = 4
 let itemH: number = 7.5
 let canRunRangs: number[] = [1, 2]
 let layoutArray: any[][] = _array.initMultArray({ key: 'id' }, `${x * y}`)
 
 function Index() {
-  const [xx, setXX] = useState(1)
-  const [yy, setYY] = useState(1)
   // 指定实体
   const [selectIndex, setSelectIndex] = useState(0)
 
@@ -30,19 +30,12 @@ function Index() {
     [10, 3]
   ])
 
-  const handleX = (): void => {
-    setXX(xx + 1)
-  }
-  const handleY = (): void => {
-    setYY(yy + 1)
-  }
   return (
     <div className='fighting'>
       <div className='fighting-panel'>
         <div
           className='own'
           onClick={(): void => {
-            // selectIndex = 0
             if (selectIndex !== 0) setSelectIndex(0)
           }}
           style={{
@@ -62,55 +55,26 @@ function Index() {
           <div>E</div>
         </div>
         {layoutArray.map((ilist: any, iindex: number): any => {
-          let istyle: any = {}
-          let flag: boolean = false
-          let canRun: boolean = false
           let ix: number = (iindex + 1) % x
+          if (ix <= 0) ix = x - 1
           let iy: number = _math.ceil((iindex + 1) / x)
-          if (iindex < x || iindex > (y - 1) * x - 1) flag = true
-          if (flag === false) {
-            for (let i: number = 1; i < y; i++) {
-              if (iindex === i * x || iindex === i * x - 1) {
-                flag = true
-                break
-              }
-            }
-          }
-          // 1-7
-          // 8-14
-
-          // 判断是否可以移动到改位置
-          const [px, py]: number[] = renderXYs[selectIndex]
-          let ipx: number = Math.abs(px + 1 - ix)
-          let ipy: number = Math.abs(py + 1 - iy)
-          const canRunRang: number = canRunRangs[selectIndex]
-          if (ipx + ipy <= canRunRang) {
-            canRun = true
-          }
-          if (!flag && canRun) {
-            istyle['backgroundColor'] = 'rgba(86,156,233,0.3)'
-          }
+          let canRun: boolean = isCanRun(renderXYs[selectIndex], [ix, iy], canRunRangs[selectIndex])
+          let hurtFlag: boolean = isHurt(
+            hurtConfigType.line,
+            renderXYs[selectIndex],
+            [1, 1, 1, 1, 2, 6, 4, 5],
+            [ix, iy]
+          )
+          let istyle: any = setStyle(canRun, hurtFlag)
 
           return (
             <Cell
               key={iindex + ilist.key}
               onClick={() => {
-                console.log({
-                  selectIndex,
-                  iindex,
-                  x: (iindex + 1) % x,
-                  y: _math.ceil((iindex + 1) / x)
-                })
-                !flag &&
-                  handeleXYs(selectIndex, {
-                    x: ((iindex + 1) % x) - 1,
-                    y: _math.ceil((iindex + 1) / x) - 1
-                  })
+                handeleXYs(selectIndex, { x: ix - 1, y: iy - 1 })
               }}
               style={istyle}
-              className={flag ? `fighting-panel-cell-border` : ''}
             >
-              {/* {iindex} */}
               {ix + ',' + iy}
             </Cell>
           )
@@ -121,14 +85,12 @@ function Index() {
         <button
           onClick={() => {
             handeleXYs(0, { x: 1, y: 2 })
-            handleX()
           }}
         >
           x
         </button>
-        <button onClick={() => handleY()}>y</button>
         <div className='fighting-info-user-base'>
-          <span>
+          {/* <span>
             <div>文字1 100/100</div>
             <div>文字2 100/100</div>
             <div>文字3 100/100</div>
@@ -142,7 +104,7 @@ function Index() {
             <div>文字7 100/100</div>
             <div>文字8 100/100</div>
             <div>文字9 100/100</div>
-          </span>
+          </span> */}
 
           {/* <span>
             <div>血量</div>

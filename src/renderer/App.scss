@@ -2,6 +2,10 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+html {
+  overflow: hidden;
+}
+
 body {
   position: relative;
   color: white;
@@ -21,6 +25,25 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    scrollbar-arrow-color: #90333f;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    scrollbar-arrow-color: #90333f;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+  }
 }
 
 // button {

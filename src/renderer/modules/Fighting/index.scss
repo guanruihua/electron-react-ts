@@ -1,9 +1,9 @@
 $w:98vw;
-$h:75vh;
 $item-w:4vw;
 $item-h:7.5vh;
 $xlineNum: 24;
-$ylineNum: 10;
+$ylineNum: 11;
+$h:82.5vh;
 $border: 1px solid #fff;
 
 * {
@@ -13,8 +13,6 @@ $border: 1px solid #fff;
 }
 
 .fighting {
-
-
 
   &-info {
     max-height: 15vh;
@@ -26,7 +24,6 @@ $border: 1px solid #fff;
     align-items: center;
 
     &-user-base {
-      min-height: fit-content;
       width: 30vw;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -46,10 +43,8 @@ $border: 1px solid #fff;
     max-height: $h;
     display: grid;
     gap: 0;
-    // grid-template-columns: repeat($xlineNum, 1fr);
     grid-template-columns: repeat($xlineNum, $item-w);
     grid-template-rows: repeat($ylineNum, $item-h);
-    // width: $w;
     height: $h;
     margin: auto;
 
@@ -57,7 +52,8 @@ $border: 1px solid #fff;
       position: relative;
     }
 
-    .own, .enemy {
+    .own,
+    .enemy {
       position: absolute;
       left: 0;
       top: 0;
@@ -99,7 +95,7 @@ $border: 1px solid #fff;
     }
 
     &-cell-border {
-      cursor: none;
+      cursor: all-scroll;
       background-color: rgba($color: #000000, $alpha: .6);
     }
 
