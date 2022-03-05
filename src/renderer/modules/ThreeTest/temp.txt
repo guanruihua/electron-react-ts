@@ -1,0 +1,152 @@
+function Index(props: any): FC<any> {
+  const mRef: any = useRef()
+  const [step, setStep] = useState(0)
+  const renderer = new THREE.WebGLRenderer()
+  useEffect((): void => {
+    renderer.setSize(window.innerWidth, window.innerHeight)
+
+    if (mRef.current.childNodes && mRef.current.childNodes.length > 0) {
+      mRef.current.innerHTML = ''
+      mRef.current.appendChild(renderer.domElement)
+    } else {
+      mRef.current.appendChild(renderer.domElement)
+    }
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500)
+    camera.position.set(0, 0, 100)
+    camera.lookAt(0, 0, 0)
+
+    const scene = new THREE.Scene()
+    const material = new THREE.LineBasicMaterial({ color: 0x0000ff })
+    const points = []
+    points.push(new THREE.Vector3(-6, 0, 0))
+    points.push(new THREE.Vector3(0, 10, 0))
+    points.push(new THREE.Vector3(6, 0, 0))
+    points.push(new THREE.Vector3(-6, 0, 0))
+
+    const geometry = new THREE.BufferGeometry().setFromPoints(points)
+
+    const line = new THREE.Line(geometry, material)
+    scene.add(line)
+    // renderer.clear();
+    renderer.render(scene, camera)
+    function animate() {
+      requestAnimationFrame(animate)
+
+      // cube.rotation.x += 0.01
+      // cube.rotation.y += 0.01
+
+      // renderer.render(scene, camera)
+    }
+    animate()
+  }, [1])
+  // useEffect((): void => {
+  //   // 创建场景
+  //   const scene = new THREE.Scene()
+  //   // 相机
+  //   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500)
+  //   // 渲染器
+  //   const renderer: any = new THREE.WebGLRenderer()
+  //   renderer.setSize(window.innerWidth, window.innerHeight)
+  //   if (step < 1) {
+  //     mRef.current.appendChild(renderer.domElement)
+  //     console.log({ step })
+  //     setStep(1)
+  //   }
+  //   // 立方体
+  //   const geometry = new THREE.BoxGeometry()
+  //   //  材质
+  //   // const material = new THREE.MeshBasicMaterial({ color: 0xffffff })
+  //   const material = new THREE.MeshBasicMaterial({ color: 0x0000ff })
+  //   // 网格
+  //   const cube = new THREE.Mesh(geometry, material)
+  //   // scene.add(cube)
+
+  //   const points: any[] = []
+  //   points.push(new THREE.Vector3(-10, 0, 0))
+  //   points.push(new THREE.Vector3(0, 10, 0))
+  //   points.push(new THREE.Vector3(10, 0, 0))
+  //   const geometry2 = new THREE.BufferGeometry().setFromPoints(points)
+  //   const line = new THREE.Line(geometry2, material)
+
+  //   // camera.position.x = 0
+  //   // camera.position.y = 0
+  //   // camera.position.z = 0
+  //   // console.log({ pos: scene.position })
+  //   // camera.lookAt(scene.position)
+  //   scene.add(line)
+
+  //   camera.position.z = 5
+
+  //   function animate() {
+  //     requestAnimationFrame(animate)
+
+  //     cube.rotation.x += 0.01
+  //     cube.rotation.y += 0.01
+
+  //     renderer.render(scene, camera)
+  //   }
+  //   animate()
+  // }, [1])
+
+  return <div ref={mRef} />
+}
+
+
+
+
+// function Index2() {
+//   const mRef: any = useRef()
+//   const [step, setStep] = useState(0)
+//   const renderer = new THREE.WebGLRenderer()
+//   useEffect((): void => {
+//     renderer.setSize(window.innerWidth, window.innerHeight)
+
+//     if (mRef.current.childNodes && mRef.current.childNodes.length > 0) {
+//       mRef.current.innerHTML = ''
+//       mRef.current.appendChild(renderer.domElement)
+//     } else {
+//       mRef.current.appendChild(renderer.domElement)
+//     }
+
+//     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500)
+//     camera.position.set(0, 0, 100)
+//     camera.lookAt(0, 0, 0)
+
+//     const scene = new THREE.Scene()
+//     const material = new THREE.LineBasicMaterial({ color: 0x0000ff })
+//     const points = []
+//     points.push(new THREE.Vector3(-6, 0, 0))
+//     points.push(new THREE.Vector3(0, 10, 0))
+//     points.push(new THREE.Vector3(6, 0, 0))
+//     points.push(new THREE.Vector3(-6, 0, 0))
+//     const geometry = new THREE.BufferGeometry().setFromPoints(points)
+//     const line = new THREE.Line(geometry, material)
+//     scene.add(line)
+
+//     const points2 = []
+//     points2.push(new THREE.Vector3(6, 6, 0))
+//     points2.push(new THREE.Vector3(0, -4, 0))
+//     points2.push(new THREE.Vector3(-6, 6, 0))
+//     points2.push(new THREE.Vector3(6, 6, 0))
+//     const geometry2 = new THREE.BufferGeometry().setFromPoints(points2)
+//     const line2 = new THREE.Line(geometry2, material)
+
+//     scene.add(line2)
+
+//     // renderer.clear();
+
+//     function animate() {
+// 			renderer.render(scene, camera)
+
+//       // cube.rotation.x += 0.01
+//       // cube.rotation.y += 0.01
+			
+//       // renderer.render(scene, camera)
+//       requestAnimationFrame(animate)
+//     }
+//     animate()
+// 		window.addEventListener('resize', animate, false)
+//   }, [1])
+//   return <div ref={mRef} />
+// }

@@ -6,16 +6,16 @@ class Index extends React.Component {
   componentDidMount() {
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(
-      50,
+      5,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     )
 
-    //   camera.position.x = -30
-    //   camera.position.y = 40
-    //   camera.position.z = 30
-    //   camera.lookAt(scene.position)
+      camera.position.x = 60
+      camera.position.y = 10
+      camera.position.z = 3
+      camera.lookAt(scene.position)
 
     const renderer: any = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth - 100, window.innerHeight - 100)
@@ -39,7 +39,7 @@ class Index extends React.Component {
       renderer.render(scene, camera)
     }
 
-    // animate()
+    animate()
   }
  
   render(): React.ReactNode {
